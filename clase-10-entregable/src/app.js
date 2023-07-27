@@ -1,8 +1,12 @@
 import express from 'express';
-import handlebars from 'express-handlebars';
-import __dirname from './utils.js';
-import viewRouter from './routes/view.router.js'
-import { Server } from 'socket.io'
+import exphbs from 'express-handlebars';
+import __dirname from './path/to/this/module.js';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+
+const app = express();
+const http = createServer(app);
+const io = new Server(http);
 
 //Preparar la configuracion del servidor para recibir objetos JSON.
 app.use(express.json());
@@ -19,6 +23,7 @@ app.use(express.static(__dirname + 'public'));
  // Crea una lista de productos (puedes usar una base de datos en su lugar) 
 let products = [];
 
+app.use('/', indexRouter);
 // Configurar rutas
 app.get('/', (req, res) => {
   res.render('index', { products });
