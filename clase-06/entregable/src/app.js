@@ -1,5 +1,7 @@
 import express from 'express';
 import fs from 'fs';
+import ProductManager from './ProductManager';
+
 const ProductManager = require('./ProductManager');
 
 const app = express();

@@ -1,0 +1,18 @@
+<div>
+    <h1 style="display: flex; justify-content:center"> Hola!!! {{user.name}}</h1>
+
+    {{#if isAdmin}}
+    {{#each food}}
+    <table>
+        <th style="font-family: Arial, Helvetica, sans-serif">Producto: </th>
+        <td>{{this.name}}</td>
+        <br>
+        <th>Precio: </th>
+        <td style="color:green"> $ {{this.price}}</td>
+    </table><br><br>
+    {{/each}}
+    {{else}}
+    <p> No tienes privilegios!!</p>
+    {{/if}}
+
+</div>

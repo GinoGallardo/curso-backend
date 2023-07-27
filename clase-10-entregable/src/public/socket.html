@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket.io</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <script>
+        const socket = io();
+        socket.on('connection', () => {
+            console.log('Socket.io connection established');
+        });
+    </script>
+</body>
+</html>
