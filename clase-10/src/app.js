@@ -2,7 +2,7 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
 import viewRouter from './routes/view.router.js'
-import Server from 'socket.io';
+import { Server } from 'socket.io'
 
 const app = express();
 const PORT = 9090;
@@ -28,21 +28,25 @@ const httpServer = app.listen(PORT, () => {
 // delclaramos el router
 app.use('/', viewRouter);
 
-//Instaciomos soket.io
+
+// Instanciamos socket.io
 const socketServer = new Server(httpServer);
 
-socketServer.on('connection', socket =>{
-    console.log("Nuevo cliente conectado");
+// Abrimos el canal de comunicacion
+socketServer.on('connection', socket => {
+    console.log("Nuevo cliente conectado!!");
 
     socket.on("mensajeKey", data => {
         console.log(data);
     })
 
-    socket.emit ('msg_02', "mensaje desde el back")
+    socket.emit('msg_02', "Mensaje desde el back!!")
 
-    socket.broadcast.emit
-    ('evento_para_todos_los_clientes', "este mensaje es para todos los socket, menos del que esta emitiendo")
+    socket.broadcast.emit("evento_para_todos_excepto_socket_actual", "Este evento es para todos los sockets, menos el socket desde que se emitió el mensaje!")
+
+
+    socketServer.emit("evento_para_todos", "Evento para todos los Sockets!");
+
 })
-
 
 

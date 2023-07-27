@@ -1,15 +1,20 @@
-const express = require('express');
-const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
-const exphbs = require('express-handlebars');
+import express from 'express';
+import handlebars from 'express-handlebars';
+import __dirname from './utils.js';
+import viewRouter from './routes/view.router.js'
+import { Server } from 'socket.io'
 
-// Configurar Handlebars como motor de vista
-app.engine('handlebars', exphbs());
+//Preparar la configuracion del servidor para recibir objetos JSON.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Confi de handlebars
+app.engine('handlebars', handlebars.engine());
+app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 
 // Configurar carpeta estática para CSS y scripts del lado del cliente
-app.use(express.static('public'));
+app.use(express.static(__dirname + 'public'));
 
  // Crea una lista de productos (puedes usar una base de datos en su lugar) 
 let products = [];
@@ -50,7 +55,7 @@ io.on('connection', (socket) => {
     io.emit('updatedProducts', products);
   });
 
-// Manejar la desconexión
+  // Handle disconnection
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
