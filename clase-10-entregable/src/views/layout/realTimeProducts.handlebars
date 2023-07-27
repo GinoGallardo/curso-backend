@@ -6,30 +6,24 @@
     <script>
         const socket = io();
 
-        // Function to add a new product using WebSocket
         function addProduct() {
             const productName = document.getElementById('productName').value;
             const product = { id: Date.now(), name: productName };
             socket.emit('addProduct', product);
         }
 
-        // Function to remove a product using WebSocket
         function removeProduct(productId) {
             socket.emit('removeProduct', productId);
         }
 
-        // WebSocket event handlers
         socket.on('initialProducts', (products) => {
-            // Display the initial list of products
             displayProducts(products);
         });
 
         socket.on('updatedProducts', (products) => {
-            // Update the list of products whenever it changes
             displayProducts(products);
         });
 
-        // Helper function to display products in the list
         function displayProducts(products) {
             const productList = document.getElementById('productList');
             productList.innerHTML = '';
@@ -45,7 +39,7 @@
 <body>
     <h1>Real-Time Products List</h1>
     <ul id="productList">
-        <!-- The list will be populated dynamically using WebSocket -->
+        
     </ul>
     <form onsubmit="addProduct(); return false;">
         <input type="text" id="productName" placeholder="Product name" required />
