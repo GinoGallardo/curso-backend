@@ -1,27 +1,27 @@
 class ContadorBanco {
-  static cuentaGlobal = 0;
+    static cuentaGlobal = 0;
 
-  constructor(responsable) {
-      this.responsable = responsable;
-      this.cuentaIndividual = 0;
-  }
+    constructor(responsable) {
+        this.responsable = responsable;
+        this.cuentaIndividual = 0;
+    }
 
-  //Metodos
-  obtenerResponsable() {
-      return this.responsable;
-  }
-  obtenerCuentaIndividual() {
-      return this.cuentaIndividual;
-  }
+    //Metodos
+    obtenerResponsable() {
+        return this.responsable;
+    }
+    obtenerCuentaIndividual() {
+        return this.cuentaIndividual;
+    }
 
-  obtenerCuentaGlobal() {
-      return ContadorBanco.cuentaGlobal;
-  }
+    obtenerCuentaGlobal() {
+        return ContadorBanco.cuentaGlobal;
+    }
 
-  contar() {
-      this.cuentaIndividual++;
-      ContadorBanco.cuentaGlobal++;
-  }
+    contar() {
+        this.cuentaIndividual++;
+        ContadorBanco.cuentaGlobal++;
+    }
 }
 
 const r1 = new ContadorBanco('Juan')

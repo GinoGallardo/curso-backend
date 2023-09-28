@@ -9,7 +9,7 @@ const impuestos = {
 };
 
 let parLlaveValor = Object.entries(impuestos);
-// console.log(parLlaveValor);
+ //console.log(parLlaveValor);
 
 
 let soloPropiedades = Object.keys(impuestos);
@@ -17,12 +17,12 @@ let soloPropiedades = Object.keys(impuestos);
 
 
 let soloValores = Object.values(impuestos);
-// console.log(soloValores);
+ //console.log(soloValores);
 
 
 // Calcular el total de impuestos
 let impuestoTotal = soloValores.reduce((valorAcumulado, valorActual) => {
-  console.log(`Valores: valorInicial: ${valorActual} y valorAcumulado: ${valorAcumulado}`);
+ // console.log(`Valores: valorInicial: ${valorActual} y valorAcumulado: ${valorAcumulado}`);
 
   return valorAcumulado + valorActual
 })

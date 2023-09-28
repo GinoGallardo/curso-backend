@@ -50,7 +50,7 @@ console.log(products);
 
 const product = manager.getProductByCode("P1");
 if (product) {
-  console.log(product);
+  //console.log(product);
 } else {
   console.log("Producto no encontrado");
 }

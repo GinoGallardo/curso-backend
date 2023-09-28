@@ -9,7 +9,7 @@ const numeros = array.map((num) => num * 2)
 // const numeros2 = array.map((num) => {
 //     return num * 2
 // })
-// console.log(numeros);
+//console.log(numeros);
 
 
 //ES7
@@ -40,17 +40,17 @@ const productos = {
 //Array.includes: Corrobora si algún elemento existe en el arreglo:
 let nombresArray = ['Juan', 'Camilo', 'Maria', 'Ana', 'Humberto', usuario1];
 
-// console.log("Array Includes con arreglos!");
-// const nombre = "Ana"
-// if (nombresArray.includes(nombre)) { // el includes me retorna un booleano
-//     console.log(`${nombre} - si existe dentro del array`);
-// } else {
-//     console.log(`${nombre} - No existe dentro del array`);
-// }
+//console.log("Array Includes con arreglos!");
+ const nombre = "Camilo"
+ if (nombresArray.includes(nombre)) { // el includes me retorna un booleano
+ //    console.log(`${nombre} - si existe dentro del array`);
+ } else {
+   //  console.log(`${nombre} - No existe dentro del array`);
+ }
 
 // prueba con objetos dentro del array
 if (nombresArray.includes(productos)) { // el includes me retorna un booleano
-    console.log(`${obj1.nombre} ${obj1.precio}- si existe dentro del array`);
+    //console.log(`${obj1.nombre} ${obj1.precio}- si existe dentro del array`);
 } else {
-    console.log(`- No existe dentro del array`);
+    //console.log(`- No existe dentro del array`);
 }
