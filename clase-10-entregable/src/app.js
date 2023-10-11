@@ -12,12 +12,12 @@ const io = new Server(http);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Confi de handlebars
+// Config de handlebars
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 
-// Configurar carpeta estática para CSS y scripts del lado del cliente
+// Config para websocket
 app.use(express.static(__dirname + 'public'));
 
  // Crea una lista de productos (puedes usar una base de datos en su lugar) 
