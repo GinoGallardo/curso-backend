@@ -12,12 +12,12 @@ const dividirConPromesa = (dividendo, divisor) => {
       }
   });
 };
-console.log("Dividiendo usando Promesas, Resultado:");
+//console.log("Dividiendo usando Promesas, Resultado:");
 // console.log(dividirConPromesa(2, 5));
 // console.log(dividirConPromesa(2, 0));
 
 
 // implementacion con then y catch
-dividirConPromesa(5, 2)
+dividirConPromesa(5, 5)
   .then(ressultado => console.log(ressultado))
   .catch(error => console.log(error))

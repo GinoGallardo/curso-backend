@@ -227,14 +227,14 @@ app.use('/realTimeProducts',  viewRouter);
 
 const socketServer = new Server(httpServer);
 
-socketServer.on('connection', (socket) => {
+let Product = [];
+
+socketServer.on('connection', socket => {
   console.log("Cliente conectado");
 
-  socket.on('mensajeKey', (data) => {
-    console.log(data);
+  socket.on('new-product', data => {
+    Product.push(data);
+    socketServer.emit('itemProducts', Product)
   })
-
-  socket.emit('mensajeKeyBack', "hola desde el Back hacia el!!")
-
 })
 

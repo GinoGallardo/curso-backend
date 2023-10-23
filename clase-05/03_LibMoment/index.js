@@ -16,7 +16,7 @@ let diaSemanaActual = moment().format('dddd');
 let mesActual = moment().format('MMMM');
 
 // Sumar días a una fecha
-let fechaFutura = moment().add(7, 'days').format('YYYY-MM-DD');
+let fechaFutura = moment().add(10, 'days').format('YYYY-MM-DD');
 
 // Restar días a una fecha
 let fechaPasada = moment().subtract(7, 'days').format('YYYY-MM-DD');

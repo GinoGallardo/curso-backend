@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Real-Time Products List</title>
+    <title>Lista de productos</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/index.js"></script>
+    <script src="/js/realTimeProducts.js"></script>
     <script>
         const socket = io();
 
@@ -38,13 +39,14 @@
     </script>
 </head>
 <body>
-    <h1>Real-Time Products List</h1>
+    <h1>Lista de Productos:</h1>
+    <form onsubmit="addProduct(); return false;">
+        <input type="text" id="productName" placeholder="Product name" required />
+    </form>
     <ul id="productList">
         
     </ul>
-    <form onsubmit="addProduct(); return false;">
-        <input type="text" id="productName" placeholder="Product name" required />
-        <button type="submit">Add Product</button>
-    </form>
+
+    
 </body>
 </html>
