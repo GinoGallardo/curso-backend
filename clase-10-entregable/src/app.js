@@ -232,6 +232,10 @@ let Product = [];
 socketServer.on('connection', socket => {
   console.log("Cliente conectado");
 
+  socket.on('addProduct', (product) => {
+    
+  })
+
   socket.on('new-product', data => {
     Product.push(data);
     socketServer.emit('itemProducts', Product)

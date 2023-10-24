@@ -1,13 +1,15 @@
 const socket = io();
 
-let Producto;
-const productName = document.getElementById('productName');
+socket.on('addProduct', data => {
+  // Handle the 'addProduct' event here
+  console.log(data);
+});
 
-socket.on('addProduct', data)
+const productName = document.getElementById('productName');
 
 productName.addEventListener('keyup', evt => {
   if(evt.key === 'Enter'){
-    if (productName.Value.trim().length > 0){
+    if (productName.value.trim().length > 0){
       socket.emit('new-product', {Producto:  productName.value });
       productName.value = '';
     }
