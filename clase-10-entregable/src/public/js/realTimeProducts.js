@@ -1,4 +1,4 @@
-const socket = io();
+
 
 socket.on('addProduct', data => {
   // Handle the 'addProduct' event here

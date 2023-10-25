@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Lista de productos</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/realTimeProducts.js"></script>
+</head>
+
+<body>
+    <h1>Lista de Productos:</h1>
+    <form onsubmit="addProduct(); return false;">
+        <input type="text" id="productName" placeholder="Product name" required />
+        <button type="button" id="addProduct">Add Product</button> <!-- Cambié el tipo de botón a "button" -->
+    </form>
+    <ul id="productList">
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Comida</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each product}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
     <script>
         const socket = io();
 
         const product = [
-        { 
-            name: "pizza",
-            price: 200,
-            id: 1
-        },
-        { 
-            name: "hamburguesa",
-            price: 150,
-            id: 2
-        },
-        { 
-            name: "papas fritas",
-            price: 100,
-            id: 3
-        },
-        { 
-            name: "papas fritas",
-            price: 100,
-            id: 4
-        }
-        ]
+            { name: "pizza", price: 200, id: 1 },
+            { name: "hamburguesa", price: 150, id: 2 },
+            { name: "papas fritas", price: 100, id: 3 },
+            { name: "papas fritas", price: 100, id: 4 }
+        ];
 
         function addProduct() {
             const productName = document.getElementById('productName').value;
-            const product = { id: Date.now(), name: productName };
+            const productPrice = document.getElementById('productPrice').value;
+            const newProduct = { name: productName, price: productPrice, id: Date.now() };
 
             const productList = document.getElementById('productList');
-            const newProductItem = documen.createElement('li');
-            newProductItem.textContent = product.name;
+            const newProductItem = document.createElement('li');
+            newProductItem.textContent = newProduct.name;
             productList.appendChild(newProductItem);
 
-            socket.emit('addProduct', product);
+            socket.emit('addProduct', newProduct);
         }
 
         function removeProduct(productId) {
             socket.emit('removeProduct', productId);
         }
 
-        socket.on('product', (products) => {
+        socket.on('itemProducts', (products) => {
             displayProducts(products);
         });
 
@@ -66,16 +77,7 @@
             });
         }
     </script>
-</head>
-<body>
-    <h1>Lista de Productos:</h1>
-    <form onsubmit="addProduct(); return false;">
-        <input type="text" id="productName" placeholder="Product name" required />
-        <button id="addProduct">Add Product</button>
-    </form>
-    <ul id="productList">
-    </ul>
-
-    
 </body>
+
 </html>
+<script src="/js/realTimeProducts.js"></script>

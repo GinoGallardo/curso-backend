@@ -3,6 +3,7 @@ import handlebars from 'express-handlebars'
 import __dirname from './utils.js';
 import viewRouter from './routes/view.router.js'
 import { Server } from 'socket.io';
+import fs from 'fs';
 
 const app = express();
 const PORT = 8080;
@@ -20,7 +21,6 @@ app.use(express.static(__dirname + '/public'));
 
 //Rutas de productos
 const productsRouter = express.Router();
-
 productsRouter.get('/', (req, res) => {
   // Leer los productos del archivo productos.json
   fs.readFile('productos.json', 'utf8', (err, data) => {
@@ -232,8 +232,9 @@ let Product = [];
 socketServer.on('connection', socket => {
   console.log("Cliente conectado");
 
-  socket.on('addProduct', (product) => {
-    
+  socket.on('addProduct', data => {
+    Product.push(data);
+    socketServer.emit('itemProducts', Product)
   })
 
   socket.on('new-product', data => {

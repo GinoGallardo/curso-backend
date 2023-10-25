@@ -1,4 +1,16 @@
-<div>
-  <h1>listo para trabajar</h1>
-</div>
-
+<table>
+  <thead>
+    <tr>
+      <th>Comida</th>
+      <th>Precio</th>
+  </thead>
+  <tbody>
+    {{#each product}} 
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.price}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<script src="/js/index.js"></script>
