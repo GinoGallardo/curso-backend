@@ -4,6 +4,7 @@ import __dirname from './utils.js';
 import viewRouter from './routes/view.router.js'
 import { Server } from 'socket.io';
 import fs from 'fs';
+import { log } from 'console';
 
 const app = express();
 const PORT = 8080;
@@ -232,6 +233,10 @@ let Product = [];
 socketServer.on('connection', socket => {
   console.log("Cliente conectado");
 
+  socket.on('mensaje', data =>{
+    console.log(data);
+  })
+
   socket.on('addProduct', data => {
     Product.push(data);
     socketServer.emit('itemProducts', Product)
@@ -242,4 +247,6 @@ socketServer.on('connection', socket => {
     socketServer.emit('itemProducts', Product)
   })
 })
+
+
 

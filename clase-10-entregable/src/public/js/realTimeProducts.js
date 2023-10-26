@@ -1,7 +1,15 @@
+const socket = io();
 
 
-socket.on('addProduct', data => {
-  // Handle the 'addProduct' event here
+
+socket.emit('addProduct', data => {
+  const itemProduct = document.getElementById('itemProducts')
+  let prods = '';
+  data.forEach(prod => {
+    prods += `${prod.Product}<br/>`;
+  });
+  itemProduct.innerHTML = prods;
+
   console.log(data);
 });
 
